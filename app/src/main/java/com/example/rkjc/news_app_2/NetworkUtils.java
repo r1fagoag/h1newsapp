@@ -17,8 +17,15 @@ public class NetworkUtils {
 
     final static String test_source = "the-next-web";
 
+
+    //for testing if from repository
+ //   final static String test_source = "gruenderszene";
+
     final static String PARAM_SORT = "sortBy";
-    final static String sortby = "latest";
+
+//   final static String sortby = "latest";
+
+    final static String sortby = "top";
 
     final static String PARAM_KEY = "apiKey";
  //   final static String apikey = Resources.getSystem().getString(android.R.string.News_API_Key);

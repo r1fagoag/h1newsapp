@@ -11,11 +11,12 @@ import java.util.List;
 
 public class NewsRepository {
     private NewsItemDao mNewsDao;
-    private static LiveData<List<NewsItem>> mAllNews;
+    private LiveData<List<NewsItem>> mAllNews;
 
     NewsRepository(Application application) {
         NewsRoomDatabase db = NewsRoomDatabase.getDatabase(application);
         mNewsDao = db.newsDao();
+        mAllNews = mNewsDao.loadAllNewsItems();
     }
 
     public LiveData<List<NewsItem>> getAllNews() {
@@ -28,7 +29,7 @@ public class NewsRepository {
 
     }
 
-    private static class allNewsAsyncTask extends AsyncTask<Void, Void, Void> {
+    private class allNewsAsyncTask extends AsyncTask<Void, Void, Void> {
 
         private NewsItemDao mAsyncTaskDao;
 
@@ -42,7 +43,7 @@ public class NewsRepository {
         }
     }
 
-    private static class syncNewsAsyncTask extends AsyncTask<URL, Void, Void> {
+    private class syncNewsAsyncTask extends AsyncTask<URL, Void, Void> {
 
         private NewsItemDao mAsyncTaskDao;
         syncNewsAsyncTask( NewsItemDao dao){

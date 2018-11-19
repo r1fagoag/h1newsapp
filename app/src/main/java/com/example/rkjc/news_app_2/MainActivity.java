@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemThatWasClickedId = item.getItemId();
         if (itemThatWasClickedId == R.id.action_search) {
-            URL url = NetworkUtils.buildUrl(null);
+            URL url = NetworkUtils.buildUrl(getString(R.string.News_API_Key));
 //            mURLDisplayTextView.setText(url.toString());
             NewsQueryTask task = new NewsQueryTask();
             task.execute(url);

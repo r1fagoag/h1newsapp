@@ -1,5 +1,7 @@
 package com.example.rkjc.news_app_2;
 
+import android.content.Context;
+import android.content.res.Resources;
 import android.net.Uri;
 
 import java.io.IOException;
@@ -19,17 +21,17 @@ public class NetworkUtils {
     final static String sortby = "latest";
 
     final static String PARAM_KEY = "apiKey";
-    final static String apikey = "3769b21d5e9a405cb90a7fec9468bdc0";
+ //   final static String apikey = Resources.getSystem().getString(android.R.string.News_API_Key);
 
 
 
-    public static URL buildUrl (String newsapiSearchQuery)
+    public static URL buildUrl (String apikey)
     {
 
-        newsapiSearchQuery = test_source;
+ //       newsapiSearchQuery = test_source;
 
         Uri builtUri = Uri.parse(base_url).buildUpon()
-                .appendQueryParameter(query_parameter, newsapiSearchQuery)
+                .appendQueryParameter(query_parameter, test_source)
                 .appendQueryParameter(PARAM_SORT, sortby)
                 .appendQueryParameter(PARAM_KEY, apikey)
                 .build();

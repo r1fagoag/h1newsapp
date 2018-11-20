@@ -29,12 +29,12 @@ public class SyncNewsJobService extends JobService {
 
         mSyncTask.execute();
 
-        return true;
+        return false;
     }
 
     @Override
     public boolean onStopJob(JobParameters jobParameters) {
         if(mSyncTask != null) mSyncTask.cancel(true);
-        return true;
+        return false;
     }
 }

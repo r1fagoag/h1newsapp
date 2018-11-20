@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new NewsRecyclerViewAdapter(this, news);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager( new LinearLayoutManager(this));
-
+        SyncNewsUtilities.scheduleSync(this);
         mNewsViewModel.getAllNews().observe(this, new Observer<List<NewsItem>>() {
             @Override
             public void onChanged(@Nullable List<NewsItem> newsItems) {
@@ -65,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
 
 
     }

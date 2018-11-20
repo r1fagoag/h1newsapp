@@ -51,4 +51,16 @@ dependencies {
     // Lifecycle components
     implementation "android.arch.lifecycle:extensions:$rootProject.archLifecycleVersion"
     annotationProcessor "android.arch.lifecycle:compiler:$rootProject.archLifecycleVersion"
+
+    //Firbase,Picasso, and UI dependecies
+    implementation 'com.google.firebase:firebase-core:16.0.0'
+    implementation 'com.firebase:firebase-jobdispatcher:0.8.5'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation 'com.android.support:support-media-compat:27.1.1'
+    implementation 'com.android.support:exifinterface:27.1.1'
+    implementation 'com.android.support:support-v4:27.1.1'
 }
+
+
+//apply plugin: 'com.google.gms.google-services'

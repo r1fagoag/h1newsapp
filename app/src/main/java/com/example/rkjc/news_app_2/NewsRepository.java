@@ -2,6 +2,7 @@ package com.example.rkjc.news_app_2;
 
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
+import android.content.Context;
 import android.os.AsyncTask;
 
 import java.io.IOException;
@@ -13,7 +14,7 @@ public class NewsRepository {
     private NewsItemDao mNewsDao;
     private LiveData<List<NewsItem>> mAllNews;
 
-    NewsRepository(Application application) {
+    NewsRepository(Context application) {
         NewsRoomDatabase db = NewsRoomDatabase.getDatabase(application);
         mNewsDao = db.newsDao();
         mAllNews = mNewsDao.loadAllNewsItems();
@@ -55,13 +56,16 @@ public class NewsRepository {
             String newsSearchResults = "";
             ArrayList<NewsItem> news = new ArrayList<>();
 
-            mAsyncTaskDao.clearAll();
+
 
             try {
                 newsSearchResults = NetworkUtils.getResponseFromHttpUrl(urls[0]);
             } catch (IOException e) {
                 e.printStackTrace();
+                return null;
             }
+
+            mAsyncTaskDao.clearAll();
             news = JsonUtils.parseNews(newsSearchResults);
 
             mAsyncTaskDao.insert(news);

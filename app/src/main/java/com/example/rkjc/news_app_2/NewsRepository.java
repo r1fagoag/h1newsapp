@@ -55,13 +55,16 @@ public class NewsRepository {
             String newsSearchResults = "";
             ArrayList<NewsItem> news = new ArrayList<>();
 
-            mAsyncTaskDao.clearAll();
+
 
             try {
                 newsSearchResults = NetworkUtils.getResponseFromHttpUrl(urls[0]);
             } catch (IOException e) {
                 e.printStackTrace();
+                return null;
             }
+
+            mAsyncTaskDao.clearAll();
             news = JsonUtils.parseNews(newsSearchResults);
 
             mAsyncTaskDao.insert(news);

@@ -66,6 +66,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //test notification
+ //       NotificationUtils.NotifySync(this);
+
 
 
 

@@ -8,7 +8,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +33,7 @@ public class NewsRecyclerViewAdapter  extends RecyclerView.Adapter<NewsRecyclerV
         LayoutInflater inflater = LayoutInflater.from(context);
         boolean shouldAttachToParentImmediately = false;
 
-        View view = inflater.inflate(R.layout.news_item, parent, shouldAttachToParentImmediately);
+        View view = inflater.inflate(R.layout.card_news_item, parent, shouldAttachToParentImmediately);
         NewsViewHolder viewHolder = new NewsViewHolder(view);
         return viewHolder;
     }
@@ -51,21 +54,35 @@ public class NewsRecyclerViewAdapter  extends RecyclerView.Adapter<NewsRecyclerV
     }
 
     public class NewsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        ImageView img;
         TextView title;
         TextView description;
-        TextView date;
+//        TextView date;
 
         public NewsViewHolder( View itemView) {
             super(itemView);
-            title = (TextView) itemView.findViewById(R.id.title);
-            description = (TextView) itemView.findViewById(R.id.description);
-            date = (TextView) itemView.findViewById(R.id.date);
+            title = (TextView) itemView.findViewById(R.id.cardtitle);
+            description = (TextView) itemView.findViewById(R.id.carddescription);
+            img = (ImageView) itemView.findViewById(R.id.cardimg);
+//            date = (TextView) itemView.findViewById(R.id.date);
         }
 
         void bind( int listIndex) {
-            title.setText("Title: " + mNews.get(listIndex).getTitle());
-            description.setText("Description: " + mNews.get(listIndex).getDescription());
-            date.setText("Date: " + mNews.get(listIndex).getPublishedAt());
+ //           title.setText("Title: " + mNews.get(listIndex).getTitle());
+ //           description.setText("Description: " + mNews.get(listIndex).getDescription());
+//            date.setText("Date: " + mNews.get(listIndex).getPublishedAt());
+
+            title.setText(mNews.get(listIndex).getTitle());
+            description.setText(mNews.get(listIndex).getPublishedAt() + " . " + mNews.get(listIndex).getDescription());
+
+            String url = mNews.get(listIndex).getUrltoImage();
+
+            if(url != null) {
+                Picasso.get()
+                        .load(url)
+                        .into(img);
+            }
+
             itemView.setOnClickListener(this);
         }
 

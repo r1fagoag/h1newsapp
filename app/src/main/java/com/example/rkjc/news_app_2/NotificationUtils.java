@@ -47,7 +47,7 @@ public class NotificationUtils {
   //              .setPriority(Notification.PRIORITY_MAX)
                 .setContentIntent(contentIntent(context))
                 .addAction(cancelAction(context))
-                .setAutoCancel(true);
+                .setAutoCancel(false);
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN
